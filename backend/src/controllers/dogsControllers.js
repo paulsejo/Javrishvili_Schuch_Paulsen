@@ -1,22 +1,22 @@
 import { check, validationResult } from "express-validator";
 import { Dog } from "../models/dog.js";
 
-const dogs = [
-  {
-    id: 0,
-    name: "Fido",
-    age: 3,
-    sex: "male",
-    race: "chihuahua",
-  },
-  {
-    id: 1,
-    name: "Fifi",
-    age: 5,
-    sex: "female",
-    race: "wienerdog",
-  },
-];
+// const dogs = [
+//   {
+//     id: 0,
+//     name: "Fido",
+//     age: 3,
+//     sex: "male",
+//     race: "chihuahua",
+//   },
+//   {
+//     id: 1,
+//     name: "Fifi",
+//     age: 5,
+//     sex: "female",
+//     race: "wienerdog",
+//   },
+// ];
 
 export const getDogs = async (req, res) => {
   const dogs = await Dog.find();
@@ -50,6 +50,6 @@ export const addDog = async (req, res) => {
 
 export const newDogValidators = [
   check("name").notEmpty().withMessage("Name is required"),
-  check("age").notEmpty().withMessage("Age is required"),
+  check("race").notEmpty().withMessage("Race is required"),
   check("sex").notEmpty().withMessage("Sex is required"),
 ];
