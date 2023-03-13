@@ -48,8 +48,23 @@ export const addDog = async (req, res) => {
   dog.save(dog).then((todo) => res.status(201).send("Dog added"));
 };
 
+export const updateDog = async (req, res) => {
+  const dog = await Dog.findById(req.body.id);
+  console.log(dog);
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json({ errors: errors.array() });
+  // }
+  dog.age = req.body.age;
+  dog.save(dog).then((todo) => res.status(201).send("Dog updated"));
+};
+
 export const newDogValidators = [
   check("name").notEmpty().withMessage("Name is required"),
   check("race").notEmpty().withMessage("Race is required"),
   check("sex").notEmpty().withMessage("Sex is required"),
+];
+
+export const updateDogValidators = [
+  check("age").notEmpty().withMessage("Age is required"),
+  // check("age").isPositiveInteger().withMessage("Age must be positive"),
 ];
