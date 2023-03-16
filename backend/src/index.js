@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import swaggerUi from "swagger-ui-express";
 
-import router from "./routes/dogsRoutes.js";
+import dogRouter from "./routes/dogsRoutes.js";
+import birdRouter from "./routes/birdsRoutes.js";
 import swaggerDocuments from "../swaggerDocuments.js";
 
 const app = express();
@@ -11,7 +12,8 @@ const port = 4000;
 
 app.use(bodyParser.json());
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocuments));
-app.use("/dogs", router);
+app.use("/dogs", dogRouter);
+app.use("/birds", birdRouter);
 
 mongoose.connect("mongodb://mongo:27017/dogs").then(() => {
   console.log("Connected to database");

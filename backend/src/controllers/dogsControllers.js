@@ -1,23 +1,6 @@
 import { check, validationResult } from "express-validator";
 import { Dog } from "../models/dog.js";
 
-// const dogs = [
-//   {
-//     id: 0,
-//     name: "Fido",
-//     age: 3,
-//     sex: "male",
-//     race: "chihuahua",
-//   },
-//   {
-//     id: 1,
-//     name: "Fifi",
-//     age: 5,
-//     sex: "female",
-//     race: "wienerdog",
-//   },
-// ];
-
 export const getDogs = async (req, res) => {
   const dogs = await Dog.find();
   res.status(200).send(dogs);
@@ -49,13 +32,22 @@ export const addDog = async (req, res) => {
 };
 
 export const updateDog = async (req, res) => {
-  const dog = await Dog.findById(req.body.id);
-  console.log(dog);
-  // if (!errors.isEmpty()) {
-  //   return res.status(400).json({ errors: errors.array() });
-  // }
+  const dog = await Dog.findById(req.params.id);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   dog.age = req.body.age;
   dog.save(dog).then((todo) => res.status(201).send("Dog updated"));
+};
+
+export const deleteDog = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const dog = await Dog.findById(req.params.id);
+  dog.delete(dog).then((todo) => res.status(201).send("Dog deleted"));
 };
 
 export const newDogValidators = [
@@ -66,5 +58,9 @@ export const newDogValidators = [
 
 export const updateDogValidators = [
   check("age").notEmpty().withMessage("Age is required"),
-  // check("age").isPositiveInteger().withMessage("Age must be positive"),
+  //check("age").isPositiveInteger().withMessage("Age must be positive"),
+];
+
+export const deleteDogValidators = [
+  // check("id").notEmpty().withMessage("Id is required"),
 ];

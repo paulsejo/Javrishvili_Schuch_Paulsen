@@ -5,16 +5,18 @@ import {
   getDogByName,
   addDog,
   updateDog,
+  deleteDog,
   newDogValidators,
   updateDogValidators,
 } from "../controllers/dogsControllers.js";
 
-const router = express.Router();
+const dogRouter = express.Router();
 
-router.get("/", getDogs);
-router.get("/:id", getDogById);
-router.get("/:name", getDogByName);
-router.post("/", newDogValidators, addDog);
-router.put("/", updateDogValidators, updateDog);
+dogRouter.get("/", getDogs);
+dogRouter.get("/:id", getDogById);
+dogRouter.get("/:name", getDogByName);
+dogRouter.post("/", newDogValidators, addDog);
+dogRouter.put("/:id", updateDogValidators, updateDog);
+dogRouter.delete("/:id", deleteDog);
 
-export default router;
+export default dogRouter;
