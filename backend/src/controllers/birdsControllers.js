@@ -7,12 +7,16 @@ export const getBirds = async (req, res) => {
 };
 
 export const getBirdById = async (req, res) => {
-  let bird = bird.findById(req.params.id);
+  let bird = await Bird.findById(req.params.id);
   res.status(200).send(bird);
 };
 
 export const getBirdByName = async (req, res) => {
-  let bird = Bird.find({ name: req.params.name });
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  let bird = await Bird.find({ name: req.params.name });
   res.status(200).send(bird);
 };
 
@@ -58,6 +62,11 @@ export const newBirdValidators = [
   check("colour").notEmpty().withMessage("Colour is required"),
 ];
 
+export const searchBirdValidators = [
+  check("name").notEmpty().withMessage("Name is required"),
+];
+
 export const updateBirdValidators = [
   check("age").notEmpty().withMessage("Age is required"),
+  check("age").isInt({ min: 0, max: 100 }).withMessage("Age must be positive"),
 ];

@@ -7,12 +7,16 @@ export const getDogs = async (req, res) => {
 };
 
 export const getDogById = async (req, res) => {
-  let dog = Dog.findById(req.params.id);
+  let dog = await Dog.findById(req.params.id);
   res.status(200).send(dog);
 };
 
 export const getDogByName = async (req, res) => {
-  let dog = Dog.find({ name: req.params.name });
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  let dog = await Dog.find({ name: req.body.name });
   res.status(200).send(dog);
 };
 
@@ -56,11 +60,11 @@ export const newDogValidators = [
   check("sex").notEmpty().withMessage("Sex is required"),
 ];
 
-export const updateDogValidators = [
-  check("age").notEmpty().withMessage("Age is required"),
-  //check("age").isPositiveInteger().withMessage("Age must be positive"),
+export const searchDogValidators = [
+  check("name").notEmpty().withMessage("Name is required"),
 ];
 
-export const deleteDogValidators = [
-  // check("id").notEmpty().withMessage("Id is required"),
+export const updateDogValidators = [
+  check("age").notEmpty().withMessage("Age is required"),
+  check("age").isInt({ min: 0, max: 100 }).withMessage("Age must be positive"),
 ];

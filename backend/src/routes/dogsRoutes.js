@@ -7,14 +7,15 @@ import {
   updateDog,
   deleteDog,
   newDogValidators,
+  searchDogValidators,
   updateDogValidators,
 } from "../controllers/dogsControllers.js";
 
 const dogRouter = express.Router();
 
 dogRouter.get("/", getDogs);
+dogRouter.get("/search", searchDogValidators, getDogByName);
 dogRouter.get("/:id", getDogById);
-dogRouter.get("/:name", getDogByName);
 dogRouter.post("/", newDogValidators, addDog);
 dogRouter.put("/:id", updateDogValidators, updateDog);
 dogRouter.delete("/:id", deleteDog);

@@ -79,15 +79,50 @@ const swaggerDocuments = {
           },
         },
       },
+      put: {
+        tags: ["Dogs"],
+        summary: "Update a dog",
+        parameters: [
+          {
+            name: "age",
+            in: "body",
+            description: "new age of the dog to be updated",
+            schema: {
+              $ref: "#/definitions/Dog",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Dog updated",
+            schema: {
+              $ref: "#/definitions/Dog",
+            },
+          },
+        },
+      },
+      delete: {
+        tags: ["Dogs"],
+        summary: "Delete a dog",
+        parameters: [],
+        responses: {
+          200: {
+            description: "Dog deleted",
+            schema: {
+              $ref: "#/definitions/Dog",
+            },
+          },
+        },
+      },
     },
-    "/{name}": {
+    "/search": {
       get: {
         tags: ["Dogs"],
         summary: "Get a dog by name",
         parameters: [
           {
             name: "name",
-            in: "path",
+            in: "body",
             description: "name of the dog to be searched for",
             schema: {
               $ref: "#/definitions/Dog",
