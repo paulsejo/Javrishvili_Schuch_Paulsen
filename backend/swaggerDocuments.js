@@ -14,7 +14,7 @@ const swaggerDocuments = {
   tags: [
     {
       name: "Dogs",
-      description: "API for dogs in the petstore",
+      description: "Dogs in the petstore",
     },
   ],
   consumes: ["application/json"],
@@ -155,6 +155,307 @@ const swaggerDocuments = {
           race: {
             type: "string",
           },
+        },
+      },
+    },
+  },
+  basePath: "/birds",
+  tags: [
+    {
+      name: "Birds",
+      description: "Birds in the petstore",
+    },
+  ],
+  consumes: ["application/json"],
+  produces: ["application/json"],
+  paths: {
+    "/": {
+      get: {
+        tags: ["Birds"],
+        summary: "Get all birds",
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+      post: {
+        tags: ["Birds"],
+        summary: "Add a new bird",
+        parameters: [
+          {
+            name: "bird",
+            in: "body",
+            description: "Bird to be added",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        ],
+        responses: {
+          201: {
+            description: "Created",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+    },
+    "/{id}": {
+      get: {
+        tags: ["Birds"],
+        summary: "Get a bird by id",
+        parameters: [
+          {
+            name: "id",
+            in: "body",
+            description: "id of the bird to be searched for",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+      put: {
+        tags: ["Birds"],
+        summary: "Update a bird",
+        parameters: [
+          {
+            name: "age",
+            in: "body",
+            description: "new age of the bird to be updated",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Bird updated",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+      delete: {
+        tags: ["Birds"],
+        summary: "Delete a bird",
+        parameters: [],
+        responses: {
+          200: {
+            description: "Bird deleted",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+    },
+    "/search": {
+      get: {
+        tags: ["Birds"],
+        summary: "Get a bird by name",
+        parameters: [
+          {
+            name: "name",
+            in: "body",
+            description: "name of the bird to be searched for",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Bird",
+            },
+          },
+        },
+      },
+    },
+  },
+  definitions: {
+    Bird: {
+      required: ["name", "sex", "class", "colour"],
+      properties: {
+        name: {
+          type: "string",
+        },
+        age: {
+          type: "integer",
+        },
+        sex: {
+          type: "string",
+        },
+        class: {
+          type: "string",
+        },
+        colour: {
+          type: "string",
+        },
+      },
+    },
+  },
+  basePath: "/snakes",
+  tags: [
+    {
+      name: "Snakes",
+      description: "Snakes in the petstore",
+    },
+  ],
+  consumes: ["application/json"],
+  produces: ["application/json"],
+  paths: {
+    "/": {
+      get: {
+        tags: ["Snakes"],
+        summary: "Get all snakes",
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+      post: {
+        tags: ["Snakes"],
+        summary: "Add a new snake",
+        parameters: [
+          {
+            name: "snake",
+            in: "body",
+            description: "Snake to be added",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        ],
+        responses: {
+          201: {
+            description: "Created",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+    },
+    "/{id}": {
+      get: {
+        tags: ["Snakes"],
+        summary: "Get a snake by id",
+        parameters: [
+          {
+            name: "id",
+            in: "body",
+            description: "id of the snake to be searched for",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+      put: {
+        tags: ["Snakes"],
+        summary: "Update a snake",
+        parameters: [
+          {
+            name: "age",
+            in: "body",
+            description: "new age of the snake to be updated",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "Snake updated",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+      delete: {
+        tags: ["Snakes"],
+        summary: "Delete a snake",
+        parameters: [],
+        responses: {
+          200: {
+            description: "Snake deleted",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+    },
+    "/search": {
+      get: {
+        tags: ["Snakes"],
+        summary: "Get a snake by name",
+        parameters: [
+          {
+            name: "name",
+            in: "body",
+            description: "name of the snake to be searched for",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        ],
+        responses: {
+          200: {
+            description: "OK",
+            schema: {
+              $ref: "#/definitions/Snake",
+            },
+          },
+        },
+      },
+    },
+  },
+  definitions: {
+    Snake: {
+      required: ["name", "sex", "race"],
+      properties: {
+        name: {
+          type: "string",
+        },
+        age: {
+          type: "integer",
+        },
+        sex: {
+          type: "string",
+        },
+        race: {
+          type: "string",
         },
       },
     },
