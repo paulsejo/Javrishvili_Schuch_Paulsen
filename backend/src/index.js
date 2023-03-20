@@ -13,9 +13,9 @@ const port = 4000;
 
 app.use(bodyParser.json());
 app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerDocuments));
-app.use("/dogs", dogRouter);
-app.use("/birds", birdRouter);
-app.use("/snakes", snakeRouter);
+app.use("/pets/dogs", dogRouter);
+app.use("/pets/birds", birdRouter);
+app.use("/pets/snakes", snakeRouter);
 
 mongoose.connect("mongodb://mongo:27017/dogs").then(() => {
   console.log("Connected to database");

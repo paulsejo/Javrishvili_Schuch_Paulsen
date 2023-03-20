@@ -10,23 +10,32 @@ const swaggerDocuments = {
     },
   },
   host: "localhost:4000",
-  basePath: "/dogs",
+  basePath: "/pets",
   tags: [
     {
-      name: "Dogs",
-      description: "Dogs in the petstore",
+      name: "Pets",
+      description: "All the pets in the petstore",
     },
   ],
   consumes: ["application/json"],
   produces: ["application/json"],
+  //paths: {
+  // "/dogs": {
+  //   tags: [
+  //     {
+  //       name: "Dogs",
+  //       description: "Dogs in the petstore",
+  //     },
+  //   ],
+  //   consumes: ["application/json"],
+  //   produces: ["application/json"],
   paths: {
-    "/": {
+    "/dogs/": {
       get: {
         tags: ["Dogs"],
         summary: "Get all dogs",
         responses: {
           200: {
-            description: "OK",
             schema: {
               $ref: "#/definitions/Dog",
             },
@@ -56,7 +65,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/{id}": {
+    "/dogs/{id}": {
       get: {
         tags: ["Dogs"],
         summary: "Get a dog by id",
@@ -115,7 +124,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/search": {
+    "/dogs/search": {
       get: {
         tags: ["Dogs"],
         summary: "Get a dog by name",
@@ -139,37 +148,17 @@ const swaggerDocuments = {
         },
       },
     },
-    definitions: {
-      Dog: {
-        required: ["name", "sex", "race"],
-        properties: {
-          name: {
-            type: "string",
-          },
-          age: {
-            type: "integer",
-          },
-          sex: {
-            type: "string",
-          },
-          race: {
-            type: "string",
-          },
-        },
-      },
-    },
-  },
-  basePath: "/birds",
-  tags: [
-    {
-      name: "Birds",
-      description: "Birds in the petstore",
-    },
-  ],
-  consumes: ["application/json"],
-  produces: ["application/json"],
-  paths: {
-    "/": {
+    // "/birds": {
+    //   tags: [
+    //     {
+    //       name: "Birds",
+    //       description: "Birds in the petstore",
+    //     },
+    //   ],
+    //   consumes: ["application/json"],
+    //   produces: ["application/json"],
+    //   paths: {
+    "/birds/": {
       get: {
         tags: ["Birds"],
         summary: "Get all birds",
@@ -205,7 +194,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/{id}": {
+    "/birds/{id}": {
       get: {
         tags: ["Birds"],
         summary: "Get a bird by id",
@@ -264,7 +253,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/search": {
+    "/birds/search": {
       get: {
         tags: ["Birds"],
         summary: "Get a bird by name",
@@ -288,40 +277,18 @@ const swaggerDocuments = {
         },
       },
     },
-  },
-  definitions: {
-    Bird: {
-      required: ["name", "sex", "class", "colour"],
-      properties: {
-        name: {
-          type: "string",
-        },
-        age: {
-          type: "integer",
-        },
-        sex: {
-          type: "string",
-        },
-        class: {
-          type: "string",
-        },
-        colour: {
-          type: "string",
-        },
-      },
-    },
-  },
-  basePath: "/snakes",
-  tags: [
-    {
-      name: "Snakes",
-      description: "Snakes in the petstore",
-    },
-  ],
-  consumes: ["application/json"],
-  produces: ["application/json"],
-  paths: {
-    "/": {
+    //},
+    // "/snakes": {
+    //   tags: [
+    //     {
+    //       name: "Snakes",
+    //       description: "Snakes in the petstore",
+    //     },
+    //   ],
+    //   consumes: ["application/json"],
+    //   produces: ["application/json"],
+    //   paths: {
+    "/snakes/": {
       get: {
         tags: ["Snakes"],
         summary: "Get all snakes",
@@ -357,7 +324,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/{id}": {
+    "/snakes/{id}": {
       get: {
         tags: ["Snakes"],
         summary: "Get a snake by id",
@@ -416,7 +383,7 @@ const swaggerDocuments = {
         },
       },
     },
-    "/search": {
+    "/snakes/search": {
       get: {
         tags: ["Snakes"],
         summary: "Get a snake by name",
@@ -442,6 +409,43 @@ const swaggerDocuments = {
     },
   },
   definitions: {
+    Dog: {
+      required: ["name", "sex", "race"],
+      properties: {
+        name: {
+          type: "string",
+        },
+        age: {
+          type: "integer",
+        },
+        sex: {
+          type: "string",
+        },
+        race: {
+          type: "string",
+        },
+      },
+    },
+    Bird: {
+      required: ["name", "sex", "class", "colour"],
+      properties: {
+        name: {
+          type: "string",
+        },
+        age: {
+          type: "integer",
+        },
+        sex: {
+          type: "string",
+        },
+        class: {
+          type: "string",
+        },
+        colour: {
+          type: "string",
+        },
+      },
+    },
     Snake: {
       required: ["name", "sex", "race"],
       properties: {
