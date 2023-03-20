@@ -1,5 +1,5 @@
 export async function fetchAllDogs() {
-  return await fetch("http://localhost:4000/dogs", {
+  return await fetch("http://localhost:4000/pets/dogs/", {
     mode: "cors",
   })
     .then((res) => {
