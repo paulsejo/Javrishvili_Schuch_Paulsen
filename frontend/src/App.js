@@ -22,7 +22,9 @@ class App extends React.Component {
         </button>
         <div className="data">
           {this.state.dogs.map((dog, key) => (
-            <div key={key}>{dog.name}</div>
+            <div key={key}>
+              {dog.name}, a {dog.race}
+            </div>
           ))}
         </div>
       </div>

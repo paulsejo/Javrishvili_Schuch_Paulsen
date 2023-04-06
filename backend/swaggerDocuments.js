@@ -19,18 +19,9 @@ const swaggerDocuments = {
   ],
   consumes: ["application/json"],
   produces: ["application/json"],
-  //paths: {
-  // "/dogs": {
-  //   tags: [
-  //     {
-  //       name: "Dogs",
-  //       description: "Dogs in the petstore",
-  //     },
-  //   ],
-  //   consumes: ["application/json"],
-  //   produces: ["application/json"],
   paths: {
     "/dogs/": {
+      tags: ["Pets"],
       get: {
         tags: ["Dogs"],
         summary: "Get all dogs",
@@ -148,16 +139,6 @@ const swaggerDocuments = {
         },
       },
     },
-    // "/birds": {
-    //   tags: [
-    //     {
-    //       name: "Birds",
-    //       description: "Birds in the petstore",
-    //     },
-    //   ],
-    //   consumes: ["application/json"],
-    //   produces: ["application/json"],
-    //   paths: {
     "/birds/": {
       get: {
         tags: ["Birds"],
@@ -277,17 +258,6 @@ const swaggerDocuments = {
         },
       },
     },
-    //},
-    // "/snakes": {
-    //   tags: [
-    //     {
-    //       name: "Snakes",
-    //       description: "Snakes in the petstore",
-    //     },
-    //   ],
-    //   consumes: ["application/json"],
-    //   produces: ["application/json"],
-    //   paths: {
     "/snakes/": {
       get: {
         tags: ["Snakes"],
